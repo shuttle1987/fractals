@@ -22,12 +22,20 @@ class Triangle:
         tri2 = Triangle(self.v1, midpoint12, midpoint23)
         tri3 = Triangle(self.v1, midpoint13, midpoint23)
         return [tri1, tri2, tri3]
+
+    def __repr__(self):
+        return "Triangle({},{},{})".format(self.v1, self.v2, self.v3)
         
 
-def get_subtriangle_vertices(sierpinski_triangle, vertices=None, depth=0):
+def get_subtriangle_vertices(sierpinski_triangle, depth=0):
     """Find the triangles contained within the given triangle"""
     
     if depth == 0:
-        return vertices
+        return sierpinski_triangle
     else:
-        pass
+        new_triangles = sierpinski_triangle.subtriangles()
+        return [get_subtriangle_vertices(triangle, depth-1) for triangle in new_triangles]
+
+right_angled_triangle = Triangle((0, 0), (0, 1), (1,0))
+subtriangles_test = get_subtriangle_vertices(right_angled_triangle, 2)
+print(subtriangles_test)
