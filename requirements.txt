@@ -1,2 +1,4 @@
+py==1.4.31
 pyparsing==2.1.5
+pytest==2.9.2
 svgwrite==1.1.8
