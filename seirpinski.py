@@ -35,7 +35,3 @@ def get_subtriangle_vertices(sierpinski_triangle, depth=0):
     else:
         new_triangles = sierpinski_triangle.subtriangles()
         return [get_subtriangle_vertices(triangle, depth-1) for triangle in new_triangles]
-
-right_angled_triangle = Triangle((0, 0), (0, 1), (1,0))
-subtriangles_test = get_subtriangle_vertices(right_angled_triangle, 2)
-print(subtriangles_test)
