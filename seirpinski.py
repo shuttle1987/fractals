@@ -15,12 +15,12 @@ class Triangle:
     def subtriangles(self):
         """Returns the Triangles contained within this one"""
         midpoint12 = (self.v1[0]+self.v2[0])/2, (self.v1[1]+self.v2[1])/2
-        midpoint13 = (self.v1[0]+self.v2[0])/2, (self.v1[1]+self.v2[1])/2
+        midpoint13 = (self.v1[0]+self.v3[0])/2, (self.v1[1]+self.v3[1])/2
         midpoint23 = (self.v2[0]+self.v3[0])/2, (self.v2[1]+self.v3[1])/2
 
         tri1 = Triangle(self.v1, midpoint12, midpoint13)
-        tri2 = Triangle(self.v1, midpoint12, midpoint23)
-        tri3 = Triangle(self.v1, midpoint13, midpoint23)
+        tri2 = Triangle(self.v2, midpoint12, midpoint23)
+        tri3 = Triangle(self.v3, midpoint13, midpoint23)
         return [tri1, tri2, tri3]
 
     def __repr__(self):
