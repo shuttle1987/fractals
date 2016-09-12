@@ -23,15 +23,19 @@ class Triangle:
         tri3 = Triangle(self.v3, midpoint13, midpoint23)
         return [tri1, tri2, tri3]
 
+
+    def midpoint(self):
+        """Find the midpoint of this triangle"""
+
     def __repr__(self):
         return "Triangle({},{},{})".format(self.v1, self.v2, self.v3)
         
 
-def get_subtriangle_vertices(sierpinski_triangle, depth=0):
+def create_sierpinski_subtriangles(sierpinski_triangle, depth=0):
     """Find the triangles contained within the given triangle"""
     
     if depth == 0:
         return sierpinski_triangle
     else:
         new_triangles = sierpinski_triangle.subtriangles()
-        return [get_subtriangle_vertices(triangle, depth-1) for triangle in new_triangles]
+        return [create_sierpinski_subtriangles(triangle, depth-1) for triangle in new_triangles]

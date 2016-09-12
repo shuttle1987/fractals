@@ -1,6 +1,6 @@
 import svgwrite
 
-from seirpinski import Triangle, get_subtriangle_vertices
+from seirpinski import Triangle, create_sierpinski_subtriangles
 from utils import flattener
 
 
@@ -11,7 +11,7 @@ def svg_sierpinski(dwg, depth, initial_triangle):
     :depth: the depth of the Sirepinski triangle being created
     :initial_triangle: the outermost triangle
     """
-    subtriangles = get_subtriangle_vertices(initial_triangle, depth)
+    subtriangles = create_sierpinski_subtriangles(initial_triangle, depth)
     flattened = flattener(subtriangles)
     for triangle in flattened:
         dwg.add(dwg.line(triangle.v1, triangle.v2, stroke='black'))
